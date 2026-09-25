@@ -183,8 +183,8 @@
   
   .scoreboard {
     background: #1e1e1e;
-    padding: 20px;
-    margin-top: 30px;
+    padding: 15px;
+    margin-top: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.3);
     width: 100%;
@@ -196,9 +196,35 @@
   
   .team-score {
     font-size: 22px;
-    margin: 12px 0;
+    margin: 10px 0;
     font-weight: 700;
     color: #ffffff;
+    display: none; /* اولش امتیازها مخفیه */
+  }
+  
+  .lock-section {
+    width: 100%;
+    max-width: 400px;
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .lock-btn {
+    background: #2d2d2d;
+    border: 2px dashed #1e88e5;
+    color: #1e88e5;
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  
+  .lock-btn:hover {
+    background: #1e88e5;
+    color: white;
   }
   
   .row {
@@ -273,12 +299,6 @@
   #historyList ul li {
     border-bottom: 1px solid #333;
     padding: 6px 0;
-  }
-  
-  #handsPlayedDiv {
-    background: #1e1e1e;
-    color: #bbbbbb;
-    border: 1px solid #333;
   }
   
   .error {
@@ -359,14 +379,19 @@
     <button onclick="saveTeamNames()">ثبت نام تیم‌ها</button>
   </div>
 
+  <!-- بخش نمایش تعداد دست‌ها و دکمه قفل امتیاز -->
   <div class="scoreboard" id="scoreboard" style="display:none;">
+    <div id="handsPlayedDiv" style="font-size:16px; color:#bbbbbb; margin-bottom: 8px;">تعداد دست‌های بازی شده: 0</div>
+    
+    <div class="lock-section" style="margin-top: 5px; margin-bottom: 5px;">
+      <button class="lock-btn" id="lockBtn" onclick="toggleScoreVisibility()">🔒 نمایش امتیاز کل (قفل است)</button>
+    </div>
+
     <div class="team-score" id="scoreA"></div>
     <div class="team-score" id="scoreB"></div>
   </div>
 
-  <div class="scoreboard" id="handsPlayedDiv" style="display:none; margin-top: 10px; font-size:18px; color:#bbbbbb;"></div>
-
-  <div style="width:100%; max-width:400px; margin-top:30px;">
+  <div style="width:100%; max-width:400px; margin-top:20px;">
     <label>قول تیم‌ها و وضعیت گرفتن امتیاز:</label>
 
     <div class="row">
@@ -415,6 +440,8 @@
   let handsPlayed = parseInt(localStorage.getItem('handsPlayed')) || 0;
   let history = JSON.parse(localStorage.getItem('history')) || [];
   
+  let isScoreVisible = false;
+
   function showMainMenu() {
     mainMenu.style.display = 'block';
     gamePage.style.display = 'none';
@@ -436,7 +463,6 @@
       document.getElementById('labelTeamA').textContent = teamAName;
       document.getElementById('labelTeamB').textContent = teamBName;
       document.getElementById('scoreboard').style.display = 'block';
-      document.getElementById('handsPlayedDiv').style.display = 'block';
       document.getElementById('historyList').style.display = 'block';
       updateScoresDisplay();
       updateHandsPlayed();
@@ -456,6 +482,27 @@
     gamePage.style.display = 'none';
     rulesPage.style.display = 'none';
     creatorPage.style.display = 'block';
+  }
+
+  function toggleScoreVisibility() {
+    isScoreVisible = !isScoreVisible;
+    const scoreAEl = document.getElementById('scoreA');
+    const scoreBEl = document.getElementById('scoreB');
+    const lockBtn = document.getElementById('lockBtn');
+
+    if (isScoreVisible) {
+      scoreAEl.style.display = 'block';
+      scoreBEl.style.display = 'block';
+      lockBtn.textContent = '🔓 مخفی کردن امتیاز کل (قفل موقت)';
+      lockBtn.style.borderColor = '#4caf50';
+      lockBtn.style.color = '#4caf50';
+    } else {
+      scoreAEl.style.display = 'none';
+      scoreBEl.style.display = 'none';
+      lockBtn.textContent = '🔒 نمایش امتیاز کل (قفل است)';
+      lockBtn.style.borderColor = '#1e88e5';
+      lockBtn.style.color = '#1e88e5';
+    }
   }
   
   document.querySelectorAll('.pm-button').forEach(button => {
@@ -486,9 +533,7 @@
 
     document.getElementById('labelTeamA').textContent = teamANameInput;
     document.getElementById('labelTeamB').textContent = teamBNameInput;
-
     document.getElementById('scoreboard').style.display = 'block';
-    document.getElementById('handsPlayedDiv').style.display = 'block';
     document.getElementById('historyList').style.display = 'block';
 
     updateScoresDisplay();
@@ -651,10 +696,23 @@
     scoreB = 0;
     handsPlayed = 0;
     history = [];
+    isScoreVisible = false;
+    
     localStorage.removeItem('scoreA');
     localStorage.removeItem('scoreB');
     localStorage.removeItem('handsPlayed');
     localStorage.removeItem('history');
+    
+    document.getElementById('scoreA').style.display = 'none';
+    document.getElementById('scoreB').style.display = 'none';
+    
+    const lockBtn = document.getElementById('lockBtn');
+    if (lockBtn) {
+      lockBtn.textContent = '🔒 نمایش امتیاز کل (قفل است)';
+      lockBtn.style.borderColor = '#1e88e5';
+      lockBtn.style.color = '#1e88e5';
+    }
+    
     updateScoresDisplay();
     updateHandsPlayed();
     updateHistoryDisplay();
