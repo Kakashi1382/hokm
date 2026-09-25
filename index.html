@@ -17,7 +17,6 @@
     overflow-x: hidden;
   }
   
-  /* استایل‌های منو */
   .main-menu {
     width: 100%;
     max-width: 500px;
@@ -67,7 +66,6 @@
     cursor: pointer;
   }
   
-  /* استایل‌های صفحه قوانین */
   .rules-container {
     width: 90%;
     max-width: 700px;
@@ -98,7 +96,6 @@
     text-align: justify;
   }
   
-  /* استایل‌های صفحه سازنده */
   .creator-container {
     width: 90%;
     max-width: 500px;
@@ -131,7 +128,6 @@
     color: #bbbbbb;
   }
   
-  /* استایل‌های صفحه بازی */
   .game-container {
     display: none;
     width: 100%;
@@ -160,7 +156,6 @@
     border-radius: 6px;
     border: 1px solid #444;
     box-sizing: border-box;
-    transition: border-color 0.3s ease;
     background: #2d2d2d;
     color: #f0f0f0;
   }
@@ -180,7 +175,6 @@
     border-radius: 8px;
     font-size: 17px;
     cursor: pointer;
-    transition: background 0.3s ease;
   }
   
   button:hover {
@@ -242,7 +236,6 @@
     color: #e0e0e0;
     cursor: pointer;
     user-select: none;
-    transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
   }
   
   .pm-button.active {
@@ -258,7 +251,6 @@
     background: #1e1e1e;
     border-radius: 8px;
     padding: 15px;
-    box-shadow: 0 1px 6px rgba(0,0,0,0.3);
     font-size: 14px;
     color: #e0e0e0;
     max-height: 250px;
@@ -301,102 +293,62 @@
       flex-direction: column;
       align-items: stretch;
     }
-    
     .team-label {
       width: 100%;
       margin-bottom: 6px;
       text-align: right;
     }
-    
     .plusminus-group {
       justify-content: flex-start;
       margin-top: 6px;
     }
-    
-    .menu-title {
-      font-size: 28px;
-    }
-    
-    .menu-button {
-      font-size: 16px;
-      padding: 14px;
-    }
   }
-  
-  /* انیمیشن‌ها */
+
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
   }
-  
   .fade-in {
     animation: fadeIn 0.5s ease-out forwards;
-  }
-  
-  .hidden {
-    display: none;
-  }
-  
-  .visible {
-    display: block;
   }
 </style>
 </head>
 <body>
 
-<!-- منوی اصلی -->
 <div id="mainMenu" class="main-menu">
   <h1 class="menu-title">حکم اسپیک</h1>
-  
   <button class="menu-button fade-in" onclick="showGamePage()">شروع بازی</button>
   <button class="menu-button fade-in" style="animation-delay: 0.1s;" onclick="showRulesPage()">قوانین بازی</button>
   <button class="menu-button fade-in" style="animation-delay: 0.2s;" onclick="showCreatorPage()">نام سازنده</button>
 </div>
 
-<!-- صفحه قوانین بازی -->
 <div id="rulesPage" class="rules-container">
   <button class="back-button" onclick="showMainMenu()">بازگشت</button>
   <h2 class="rules-title">قوانین بازی حکم اسپیک</h2>
-  
   <div class="rules-content">
     <p>حکم اسپیک یک بازی کارتی محبوب ایرانی است که با 4 بازیکن انجام می‌شود. این بازی به صورت دو تیم دو نفره (تیم A و تیم B) انجام می‌شود.</p>
-    
     <p>هر بازیکن 13 کارت دریافت می‌کند. در هر دست، تیم‌ها باید حدس بزنند که چند دست (trick) خواهند برد.</p>
-    
     <p>قوانین اصلی:</p>
-    
     <ul>
       <li>هر تیم باید حداقل 2 دست در هر بازی اعلام کند</li>
       <li>اگر تیمی 11 اعلام کند و موفق به گرفتن تمام 11 دست شود، 22 امتیاز دریافت می‌کند</li>
       <li>اگر تیمی کمتر از قول خود دست بگیرد، امتیاز منفی دریافت می‌کند</li>
       <li>اگر تیمی بیش از قول خود دست بگیرد، فقط امتیاز مثبت قول خود را دریافت می‌کند</li>
-      <li>اگر تیمی 11 اعلام کند، تیم مقابل باید حداقل 2 دست اعلام کند</li>
-      <li>حداقل قول برای هر تیم 2 دست است، مگر اینکه تیم مقابل 11 اعلام کرده باشد</li>
-      <li>هر دستی که گرفته می‌شود باید هم‌خال یا هم‌رنگ باشد مگر اینکه خال دیگری بازی شده باشد</li>
-      <li>بازیکنی که بیشترین کارت از خال بازی شده را دارد برنده دست می‌شود</li>
     </ul>
-    
     <p>پایان بازی: تیمی که زودتر به امتیاز 150 برسد برنده بازی است.</p>
   </div>
 </div>
 
-<!-- صفحه نام سازنده -->
 <div id="creatorPage" class="creator-container">
   <button class="back-button" onclick="showMainMenu()">بازگشت</button>
   <h2 class="creator-title">سازنده بازی</h2>
-  
   <div class="creator-name">Mohammad Kakashi</div>
-  
   <p>این برنامه به منظور تسهیل امتیازدهی بازی حکم اسپیک طراحی شده است.</p>
-  <p>با استفاده از این ابزار می‌توانید به راحتی امتیازات تیم‌ها را محاسبه و مدیریت کنید.</p>
-  
   <p class="signature">"طراحی شده با ♥ برای دوستداران حکم"</p>
 </div>
 
-<!-- صفحه بازی -->
 <div id="gamePage" class="game-container">
   <button class="back-button" onclick="showMainMenu()">بازگشت به منو</button>
-
   <h1>حکم اسپیک</h1>
 
   <div style="width:100%; max-width:400px;">
@@ -412,7 +364,6 @@
     <div class="team-score" id="scoreB"></div>
   </div>
 
-  <!-- تعداد دست‌های بازی شده -->
   <div class="scoreboard" id="handsPlayedDiv" style="display:none; margin-top: 10px; font-size:18px; color:#bbbbbb;"></div>
 
   <div style="width:100%; max-width:400px; margin-top:30px;">
@@ -421,7 +372,7 @@
     <div class="row">
       <div class="team-label" id="labelTeamA">تیم A</div>
       <div>
-        <input type="number" id="aBid" placeholder="قول تیم A (بین ۲ تا ۱۱)" min="2" max="11" />
+        <input type="number" id="aBid" placeholder="قول تیم A (بین ۲ تا ۱۱)" />
         <div class="error" id="aBidError">❌ فقط اعداد ۲ تا ۱۱ مجاز هستند!</div>
         <div class="plusminus-group">
           <button type="button" class="pm-button" data-for="aBid" data-sign="positive" title="گرفته شده">+</button>
@@ -433,7 +384,7 @@
     <div class="row">
       <div class="team-label" id="labelTeamB">تیم B</div>
       <div>
-        <input type="number" id="bBid" placeholder="قول تیم B (بین ۲ تا ۱۱)" min="2" max="11" />
+        <input type="number" id="bBid" placeholder="قول تیم B (بین ۲ تا ۱۱)" />
         <div class="error" id="bBidError">❌ فقط اعداد ۲ تا ۱۱ مجاز هستند!</div>
         <div class="plusminus-group">
           <button type="button" class="pm-button" data-for="bBid" data-sign="positive" title="گرفته شده">+</button>
@@ -454,19 +405,16 @@
 </div>
 
 <script>
-  // متغیرهای مربوط به منو
   const mainMenu = document.getElementById('mainMenu');
   const gamePage = document.getElementById('gamePage');
   const rulesPage = document.getElementById('rulesPage');
   const creatorPage = document.getElementById('creatorPage');
   
-  // متغیرهای بازی
   let scoreA = parseInt(localStorage.getItem('scoreA')) || 0;
   let scoreB = parseInt(localStorage.getItem('scoreB')) || 0;
   let handsPlayed = parseInt(localStorage.getItem('handsPlayed')) || 0;
   let history = JSON.parse(localStorage.getItem('history')) || [];
   
-  // توابع منو
   function showMainMenu() {
     mainMenu.style.display = 'block';
     gamePage.style.display = 'none';
@@ -480,7 +428,6 @@
     rulesPage.style.display = 'none';
     creatorPage.style.display = 'none';
     
-    // بارگذاری نام تیم‌ها اگر وجود داشته باشند
     const teamAName = localStorage.getItem('teamAName');
     const teamBName = localStorage.getItem('teamBName');
     if(teamAName && teamBName){
@@ -511,12 +458,9 @@
     creatorPage.style.display = 'block';
   }
   
-  // مدیریت انتخاب دکمه های + و -
   document.querySelectorAll('.pm-button').forEach(button => {
     button.addEventListener('click', () => {
       const forInput = button.dataset.for;
-      const sign = button.dataset.sign;
-
       const relatedButtons = document.querySelectorAll(`.pm-button[data-for="${forInput}"]`);
 
       if(button.classList.contains('active')){
@@ -555,8 +499,8 @@
   function getSignForInput(inputId) {
     const posBtn = document.querySelector(`.pm-button[data-for="${inputId}"][data-sign="positive"]`);
     const negBtn = document.querySelector(`.pm-button[data-for="${inputId}"][data-sign="negative"]`);
-    if(posBtn.classList.contains('active')) return 1;
-    if(negBtn.classList.contains('active')) return -1;
+    if(posBtn && posBtn.classList.contains('active')) return 1;
+    if(negBtn && negBtn.classList.contains('active')) return -1;
     return 0;
   }
 
@@ -566,71 +510,48 @@
     const aBidError = document.getElementById('aBidError');
     const bBidError = document.getElementById('bBidError');
 
-    // پنهان کردن پیام‌های خطا
     aBidError.style.display = 'none';
     bBidError.style.display = 'none';
 
-    let aBid = parseInt(aBidInput.value) || 0;
-    let bBid = parseInt(bBidInput.value) || 0;
+    let aBid = parseInt(aBidInput.value);
+    let bBid = parseInt(bBidInput.value);
+
+    let isValid = true;
+    if (isNaN(aBid) || aBid < 2 || aBid > 11) {
+      aBidError.style.display = 'block';
+      isValid = false;
+    }
+    if (isNaN(bBid) || bBid < 2 || bBid > 11) {
+      bBidError.style.display = 'block';
+      isValid = false;
+    }
+    if (!isValid) return;
 
     const aSign = getSignForInput('aBid');
     const bSign = getSignForInput('bBid');
 
+    if(aSign === 0 || bSign === 0){
+      alert('لطفاً وضعیت + یا - گرفتن امتیاز را برای هر دو تیم مشخص کنید.');
+      return;
+    }
+
     const teamAName = localStorage.getItem('teamAName') || 'تیم A';
     const teamBName = localStorage.getItem('teamBName') || 'تیم B';
 
-    // اعتبارسنجی قول‌ها
-    let isValid = true;
-    
-    if (aBid < 2 || aBid > 11) {
-      aBidError.style.display = 'block';
-      isValid = false;
-    }
-    
-    if (bBid < 2 || bBid > 11) {
-      bBidError.style.display = 'block';
-      isValid = false;
-    }
-    
-    if (!isValid) return;
-    
-    // اگر قول مثبت وارد شده ولی علامت + یا - انتخاب نشده
-    if((aBid > 0 && aSign === 0) || (bBid > 0 && bSign === 0)){
-      alert('لطفاً وضعیت + یا - گرفتن امتیاز را برای تیم‌های دارای قول مشخص کنید.');
-      return;
-    }
-    
-    // اعتبارسنجی بیشتر برای قول صفر
-    if(aBid === 0 && bBid !== 11) {
-      alert('تیم A فقط در صورتی می‌تواند قول صفر دهد که تیم B قول ۱۱ داده باشد.');
-      return;
-    }
-    
-    if(bBid === 0 && aBid !== 11) {
-      alert('تیم B فقط در صورتی می‌تواند قول صفر دهد که تیم A قول ۱۱ داده باشد.');
-      return;
+    if (aBid === 11) {
+      scoreA += aSign === 1 ? 22 : -22;
+    } else {
+      scoreA += aSign * aBid;
     }
 
-    // محاسبه امتیاز
-    if (aBid > 0) {
-      if(aBid === 11){
-        scoreA += aSign === 1 ? 22 : -22;
-      } else {
-        scoreA += aSign * aBid;
-      }
-    }
-
-    if (bBid > 0) {
-      if(bBid === 11){
-        scoreB += bSign === 1 ? 22 : -22;
-      } else {
-        scoreB += bSign * bBid;
-      }
+    if (bBid === 11) {
+      scoreB += bSign === 1 ? 22 : -22;
+    } else {
+      scoreB += bSign * bBid;
     }
 
     handsPlayed++;
 
-    // ذخیره در تاریخچه
     const now = new Date();
     const timeString = now.toLocaleTimeString('fa-IR', {hour12:false});
 
@@ -644,7 +565,6 @@
       bSign
     });
 
-    // ذخیره لوکال
     localStorage.setItem('handsPlayed', handsPlayed);
     localStorage.setItem('scoreA', scoreA);
     localStorage.setItem('scoreB', scoreB);
@@ -659,7 +579,6 @@
   function updateScoresDisplay() {
     const teamAName = localStorage.getItem('teamAName') || 'تیم A';
     const teamBName = localStorage.getItem('teamBName') || 'تیم B';
-
     document.getElementById('scoreA').textContent = `${teamAName}: ${scoreA}`;
     document.getElementById('scoreB').textContent = `${teamBName}: ${scoreB}`;
   }
@@ -671,12 +590,10 @@
   function updateHistoryDisplay() {
     const ul = document.getElementById('historyUl');
     ul.innerHTML = '';
-
-    history.forEach((hand, index) => {
+    history.forEach((hand) => {
       const li = document.createElement('li');
       const aSignStr = hand.aSign === 1 ? '+' : '−';
       const bSignStr = hand.bSign === 1 ? '+' : '−';
-
       li.textContent = `${hand.time} - ${hand.teamAName}: ${aSignStr}${hand.aBid} | ${hand.teamBName}: ${bSignStr}${hand.bBid}`;
       ul.appendChild(li);
     });
@@ -685,13 +602,9 @@
   function clearInputs() {
     document.getElementById('aBid').value = '';
     document.getElementById('bBid').value = '';
-
-    // حذف انتخاب + یا - از دکمه‌ها
     ['aBid', 'bBid'].forEach(inputId => {
       document.querySelectorAll(`.pm-button[data-for="${inputId}"]`).forEach(btn => btn.classList.remove('active'));
     });
-    
-    // پنهان کردن پیام‌های خطا
     document.getElementById('aBidError').style.display = 'none';
     document.getElementById('bBidError').style.display = 'none';
   }
@@ -703,29 +616,23 @@
     }
     const lastHand = history.pop();
 
-    // بازگرداندن امتیازها
-    if(lastHand.aBid > 0){
-      if(lastHand.aBid === 11){
-        scoreA -= lastHand.aSign === 1 ? 22 : -22;
-      } else {
-        scoreA -= lastHand.aSign * lastHand.aBid;
-      }
+    if(lastHand.aBid === 11){
+      scoreA -= lastHand.aSign === 1 ? 22 : -22;
+    } else {
+      scoreA -= lastHand.aSign * lastHand.aBid;
     }
-    if(lastHand.bBid > 0){
-      if(lastHand.bBid === 11){
-        scoreB -= lastHand.bSign === 1 ? 22 : -22;
-      } else {
-        scoreB -= lastHand.bSign * lastHand.bBid;
-      }
+
+    if(lastHand.bBid === 11){
+      scoreB -= lastHand.bSign === 1 ? 22 : -22;
+    } else {
+      scoreB -= lastHand.bSign * lastHand.bBid;
     }
 
     handsPlayed--;
-
     if(handsPlayed < 0) handsPlayed = 0;
     if(scoreA < 0) scoreA = 0;
     if(scoreB < 0) scoreB = 0;
 
-    // ذخیره لوکال
     localStorage.setItem('handsPlayed', handsPlayed);
     localStorage.setItem('scoreA', scoreA);
     localStorage.setItem('scoreB', scoreB);
@@ -754,32 +661,8 @@
     clearInputs();
   }
 
-  // نمایش منوی اصلی در ابتدای بارگذاری
   window.addEventListener('load', () => {
     showMainMenu();
-    
-    // افزودن اعتبارسنجی به فیلدهای عددی
-    document.getElementById('aBid').addEventListener('input', function() {
-      const value = parseInt(this.value) || 0;
-      const error = document.getElementById('aBidError');
-      
-      if (value < 2 || value > 11) {
-        error.style.display = 'block';
-      } else {
-        error.style.display = 'none';
-      }
-    });
-    
-    document.getElementById('bBid').addEventListener('input', function() {
-      const value = parseInt(this.value) || 0;
-      const error = document.getElementById('bBidError');
-      
-      if (value < 2 || value > 11) {
-        error.style.display = 'block';
-      } else {
-        error.style.display = 'none';
-      }
-    });
   });
 </script>
 
